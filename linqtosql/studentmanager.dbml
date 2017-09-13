@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="StudentManger" Class="studentmanagerDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=StudentManger;Integrated Security=True" SettingsObjectName="linqtosql.Properties.Settings" SettingsPropertyName="StudentMangerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Class" Member="Class">
+    <Type Name="Class">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="PrimaryTeacherID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="PrimaryTeacher_Class" Member="PrimaryTeacher" ThisKey="PrimaryTeacherID" OtherKey="ID" Type="PrimaryTeacher" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PrimaryTeacher" Member="PrimaryTeacher">
+    <Type Name="PrimaryTeacher">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Association Name="PrimaryTeacher_Class" Member="Class" ThisKey="ID" OtherKey="PrimaryTeacherID" Type="Class" />
+    </Type>
+  </Table>
+</Database>
